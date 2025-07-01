@@ -188,6 +188,11 @@ function selectWorkflow(workflowId) {
         }, 100);
     });
     
+    // Activate electrons for this workflow
+    document.querySelectorAll(`.electron.${workflowId}`).forEach(electron => {
+        electron.classList.add('active');
+    });
+    
     updateDetailPanel(workflow);
 }
 
@@ -230,6 +235,11 @@ function selectRecord(recordId, workflowId) {
         path.classList.add('active');
     });
     
+    // Activate electrons for this workflow
+    document.querySelectorAll(`.electron.${workflowId}`).forEach(electron => {
+        electron.classList.add('active');
+    });
+    
     updateDetailPanel(workflow, record, relatedPaths);
 }
 
@@ -238,7 +248,7 @@ function clearSelection() {
     currentRecord = null;
     
     // Remove all active states
-    document.querySelectorAll('.workflow-button, .record, .integration-path').forEach(element => {
+    document.querySelectorAll('.workflow-button, .record, .integration-path, .electron').forEach(element => {
         element.classList.remove('active', 'highlight', 'animate-in');
     });
     
@@ -301,12 +311,17 @@ function updateDetailPanel(workflow, record, relatedPaths) {
                     }).join('')}
                 </div>
             </div>
+            <div style="margin-top: 20px; padding: 15px; background: rgba(${workflow.color.slice(1).match(/.{2}/g).map(hex => parseInt(hex, 16)).join(', ')}, 0.1); border-radius: 10px; border-left: 4px solid ${workflow.color};">
+                <p style="color: #555; font-style: italic; margin: 0;">
+                    <strong>💫 Integration in Action:</strong> Watch the animated data flow as information travels between PLM and MES systems in real-time.
+                </p>
+            </div>
         `;
     } else {
         // Show default state
         panel.innerHTML = `
             <h3>PLM-MES Integration Explorer</h3>
-            <p style="margin-bottom: 25px;">Click on the colored workflow buttons above or individual records to explore the integration scenarios.</p>
+            <p style="margin-bottom: 25px;">Click on the colored workflow buttons above or individual records to explore the integration scenarios and watch data flow animations.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; text-align: left;">
                 ${Object.entries(workflows).map(([id, workflow]) => `
                     <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid ${workflow.color};">

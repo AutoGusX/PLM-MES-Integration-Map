@@ -9,7 +9,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: #000000;
     min-height: 100vh;
 }
 
@@ -37,9 +37,9 @@ header {
 }
 
 .autodesk-logo {
-    height: 60px;
+    height: 80px;
     width: auto;
-    opacity: 0.8;
+    opacity: 0.9;
     transition: opacity 0.3s ease;
 }
 
@@ -55,10 +55,7 @@ header {
 header h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
-    background: linear-gradient(45deg, #2196F3, #4CAF50, #FF9800);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #2196F3;
 }
 
 header p {
@@ -143,7 +140,7 @@ header p {
     margin-bottom: 30px;
     font-size: 1.8rem;
     color: #333;
-    border-bottom: 3px solid #eee;
+    border-bottom: 3px solid #ffffff;
     padding-bottom: 15px;
 }
 
@@ -205,19 +202,19 @@ header p {
 }
 
 .record.bom-transfer.active {
-    background: linear-gradient(135deg, #2196F3, #21CBF3);
+    background: #2196F3;
     color: white;
     border-left-color: #fff;
 }
 
 .record.automated-capa.active {
-    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    background: #4CAF50;
     color: white;
     border-left-color: #fff;
 }
 
 .record.eco-disposition.active {
-    background: linear-gradient(135deg, #FF9800, #FFC107);
+    background: #FF9800;
     color: white;
     border-left-color: #fff;
 }
@@ -338,7 +335,7 @@ header p {
     }
     
     .autodesk-logo {
-        height: 50px;
+        height: 70px;
     }
     
     .workflow-controls {
