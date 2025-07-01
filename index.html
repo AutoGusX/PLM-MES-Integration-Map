@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLM-MES Integration Map</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="https://brand.autodesk.com/wp-content/uploads/2025/02/logo-12-color-autodesk-white-273x203@2x.png" alt="Autodesk" class="autodesk-logo">
+                <div class="header-text">
+                    <h1>PLM-MES Integration Scenarios</h1>
+                    <p>Click on workflow titles or records to explore integration paths</p>
+                </div>
+            </div>
+        </header>
+
+        <div class="workflow-controls">
+            <div class="workflow-button" data-workflow="bom-transfer">
+                <div class="workflow-indicator bom-transfer"></div>
+                BOM Transfer
+            </div>
+            <div class="workflow-button" data-workflow="automated-capa">
+                <div class="workflow-indicator automated-capa"></div>
+                Automated CAPA
+            </div>
+            <div class="workflow-button" data-workflow="eco-disposition">
+                <div class="workflow-indicator eco-disposition"></div>
+                ECO Disposition Cost
+            </div>
+        </div>
+
+        <div class="integration-map">
+            <!-- PLM System -->
+            <div class="system plm-system">
+                <h2>PLM System</h2>
+                
+                <!-- BOM Transfer Records -->
+                <div class="record bom-transfer eco" data-record="eco" data-workflow="bom-transfer">
+                    <h3>ECO</h3>
+                    <p>Engineering Change Order</p>
+                </div>
+                
+                <div class="record bom-transfer bom-plm" data-record="bom-plm" data-workflow="bom-transfer">
+                    <h3>BOM</h3>
+                    <p>Bill of Materials</p>
+                </div>
+                
+                <div class="record bom-transfer items-plm" data-record="items-plm" data-workflow="bom-transfer">
+                    <h3>Items</h3>
+                    <p>Product Items</p>
+                </div>
+
+                <!-- Automated CAPA Records -->
+                <div class="record automated-capa capa" data-record="capa" data-workflow="automated-capa">
+                    <h3>CAPA</h3>
+                    <p>Corrective Action</p>
+                </div>
+
+                <!-- ECO Disposition Records -->
+                <div class="record eco-disposition eco-review" data-record="eco-review" data-workflow="eco-disposition">
+                    <h3>ECO Review</h3>
+                    <p>Cost Analysis</p>
+                </div>
+            </div>
+
+            <!-- Integration Layer with SVG -->
+            <div class="integration-layer">
+                <svg class="integration-svg" viewBox="0 0 400 600">
+                    <!-- BOM Transfer paths -->
+                    <path class="integration-path bom-transfer" data-workflow="bom-transfer" 
+                          d="M 50 100 Q 200 100 350 100" stroke="#2196F3" stroke-width="2" fill="none" opacity="0.3" id="path-bom-1"/>
+                    <path class="integration-path bom-transfer" data-workflow="bom-transfer" 
+                          d="M 50 200 Q 200 200 350 180" stroke="#2196F3" stroke-width="2" fill="none" opacity="0.3" id="path-bom-2"/>
+                    <path class="integration-path bom-transfer" data-workflow="bom-transfer" 
+                          d="M 50 250 Q 200 250 350 220" stroke="#2196F3" stroke-width="2" fill="none" opacity="0.3" id="path-bom-3"/>
+
+                    <!-- Automated CAPA path -->
+                    <path class="integration-path automated-capa" data-workflow="automated-capa" 
+                          d="M 350 350 Q 200 350 50 320" stroke="#4CAF50" stroke-width="2" fill="none" opacity="0.3" id="path-capa-1"/>
+
+                    <!-- ECO Disposition paths -->
+                    <path class="integration-path eco-disposition" data-workflow="eco-disposition" 
+                          d="M 50 450 Q 200 450 350 420" stroke="#FF9800" stroke-width="2" fill="none" opacity="0.3" id="path-eco-1"/>
+                    <path class="integration-path eco-disposition" data-workflow="eco-disposition" 
+                          d="M 350 460 Q 200 460 50 480" stroke="#FF9800" stroke-width="2" fill="none" opacity="0.3" id="path-eco-2"/>
+
+                    <!-- Electron dots for animation -->
+                    <circle class="electron bom-transfer" r="4" fill="#2196F3" opacity="0">
+                        <animateMotion dur="2s" repeatCount="indefinite">
+                            <mpath href="#path-bom-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="electron bom-transfer" r="4" fill="#2196F3" opacity="0">
+                        <animateMotion dur="2s" repeatCount="indefinite" begin="0.5s">
+                            <mpath href="#path-bom-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="electron bom-transfer" r="4" fill="#2196F3" opacity="0">
+                        <animateMotion dur="2.2s" repeatCount="indefinite">
+                            <mpath href="#path-bom-2"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="electron bom-transfer" r="4" fill="#2196F3" opacity="0">
+                        <animateMotion dur="2.4s" repeatCount="indefinite">
+                            <mpath href="#path-bom-3"/>
+                        </animateMotion>
+                    </circle>
+
+                    <circle class="electron automated-capa" r="4" fill="#4CAF50" opacity="0">
+                        <animateMotion dur="2s" repeatCount="indefinite">
+                            <mpath href="#path-capa-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="electron automated-capa" r="4" fill="#4CAF50" opacity="0">
+                        <animateMotion dur="2s" repeatCount="indefinite" begin="1s">
+                            <mpath href="#path-capa-1"/>
+                        </animateMotion>
+                    </circle>
+
+                    <circle class="electron eco-disposition" r="4" fill="#FF9800" opacity="0">
+                        <animateMotion dur="2s" repeatCount="indefinite">
+                            <mpath href="#path-eco-1"/>
+                        </animateMotion>
+                    </circle>
+                    <circle class="electron eco-disposition" r="4" fill="#FF9800" opacity="0">
+                        <animateMotion dur="2.5s" repeatCount="indefinite">
+                            <mpath href="#path-eco-2"/>
+                        </animateMotion>
+                    </circle>
+
+                    <!-- Arrow markers -->
+                    <defs>
+                        <marker id="arrowhead-blue" markerWidth="10" markerHeight="7" 
+                                refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#2196F3"/>
+                        </marker>
+                        <marker id="arrowhead-green" markerWidth="10" markerHeight="7" 
+                                refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#4CAF50"/>
+                        </marker>
+                        <marker id="arrowhead-orange" markerWidth="10" markerHeight="7" 
+                                refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#FF9800"/>
+                        </marker>
+                    </defs>
+                </svg>
+            </div>
+
+            <!-- MES System -->
+            <div class="system mes-system">
+                <h2>MES System</h2>
+                
+                <!-- BOM Transfer Records -->
+                <div class="record bom-transfer bom-mes" data-record="bom-mes" data-workflow="bom-transfer">
+                    <h3>BOM</h3>
+                    <p>Manufacturing BOM</p>
+                </div>
+                
+                <div class="record bom-transfer items-mes" data-record="items-mes" data-workflow="bom-transfer">
+                    <h3>Items</h3>
+                    <p>Manufacturing Items</p>
+                </div>
+
+                <!-- Automated CAPA Records -->
+                <div class="record automated-capa production-event" data-record="production-event" data-workflow="automated-capa">
+                    <h3>Production Event</h3>
+                    <p>With Waste Logging</p>
+                </div>
+
+                <!-- ECO Disposition Records -->
+                <div class="record eco-disposition inventory-cost" data-record="inventory-cost" data-workflow="eco-disposition">
+                    <h3>Inventory & Cost</h3>
+                    <p>Real-time Data</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="workflow-details">
+            <div class="detail-panel" id="detail-panel">
+                <h3>Select a workflow or record to see details</h3>
+                <p>Click on the colored workflow buttons above or individual records to explore the integration scenarios.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
