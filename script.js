@@ -269,16 +269,16 @@ function updateDetailPanel(workflow, record, relatedPaths) {
                 <span style="background: ${workflow.color}; color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
                     ${record.system} System
                 </span>
-                <span style="background: #eee; color: #666; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem;">
+                <span style="background: white; color: #666; padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; border: 1px solid #ddd;">
                     ${workflow.name}
                 </span>
             </div>
             <p style="margin-bottom: 20px; font-size: 1.1rem;">${record.description}</p>
             ${relatedPaths && relatedPaths.length > 0 ? `
-                <div style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                <div style="text-align: left; background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
                     <h4 style="margin-bottom: 15px; color: ${workflow.color};">Integration Connections:</h4>
                     ${relatedPaths.map(path => `
-                        <div style="margin-bottom: 10px; padding: 10px; background: white; border-radius: 5px; border-left: 3px solid ${workflow.color};">
+                        <div style="margin-bottom: 10px; padding: 10px; background: white; border-radius: 5px; border-left: 3px solid ${workflow.color}; border: 1px solid #eee;">
                             <strong>${recordDetails[path.from]?.title || path.from}</strong> → 
                             <strong>${recordDetails[path.to]?.title || path.to}</strong>
                             <br><small style="color: #666;">${path.description}</small>
@@ -292,13 +292,13 @@ function updateDetailPanel(workflow, record, relatedPaths) {
         panel.innerHTML = `
             <h3 style="color: ${workflow.color};">${workflow.name}</h3>
             <p style="margin-bottom: 25px; font-size: 1.1rem;">${workflow.description}</p>
-            <div style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <div style="text-align: left; background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd;">
                 <h4 style="margin-bottom: 15px; color: ${workflow.color};">Process Flow:</h4>
                 <ol style="padding-left: 20px;">
                     ${workflow.process.map(step => `<li style="margin-bottom: 8px; color: #555;">${step}</li>`).join('')}
                 </ol>
             </div>
-            <div style="text-align: left; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+            <div style="text-align: left; background: white; padding: 20px; border-radius: 10px; border: 1px solid #ddd;">
                 <h4 style="margin-bottom: 15px; color: ${workflow.color};">Involved Records:</h4>
                 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
                     ${workflow.records.map(recordId => {
@@ -324,7 +324,7 @@ function updateDetailPanel(workflow, record, relatedPaths) {
             <p style="margin-bottom: 25px;">Click on the colored workflow buttons above or individual records to explore the integration scenarios and watch data flow animations.</p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; text-align: left;">
                 ${Object.entries(workflows).map(([id, workflow]) => `
-                    <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; border-left: 4px solid ${workflow.color};">
+                    <div style="background: white; padding: 20px; border-radius: 10px; border-left: 4px solid ${workflow.color}; border: 1px solid #ddd;">
                         <h4 style="color: ${workflow.color}; margin-bottom: 10px;">${workflow.name}</h4>
                         <p style="font-size: 0.95rem; color: #666;">${workflow.description}</p>
                     </div>
